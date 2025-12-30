@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominique Bill Cataria | Architecte de Systèmes Digitaux</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Expert en architecture digitale : Automatisation (Make), Tunnels de Vente (Systeme.io) et Développement Web.">
+    
+    <!-- Polices Ultra Modernes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icônes & Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- CONFIGURATION DESIGN SYSTEM (DARK MODE) --- */
+        :root {
+            /* Dark Palette */
+            --bg-dark: #0B0F19;      /* Fond très sombre (Noir bleuté) */
+            --bg-card: #151B2B;      /* Fond des cartes */
+            --text-main: #FFFFFF;
+            --text-muted: #94A3B8;
+            
+            /* Gradients & Accents */
+            --primary: #6366F1;      /* Indigo */
+            --accent: #8B5CF6;       /* Violet */
+            --glow: #38bdf8;         /* Cyan (Lueur) */
+            --gradient-text: linear-gradient(135deg, #6366F1 0%, #38bdf8 100%);
+            --gradient-btn: linear-gradient(90deg, #4F46E5 0%, #7C3AED 100%);
+            
+            /* UI Elements */
+            --border: 1px solid rgba(255, 255, 255, 0.08);
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .brand { font-family: 'Outfit', sans-serif; }
+        a { text-decoration: none; transition: 0.3s ease; }
+
+        /* --- BACKGROUND TECH EFFECT (La Grille) --- */
+        .tech-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: var(--border);
+            padding: 1.2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .brand { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+        .brand span { color: var(--primary); }
+
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--text-muted); font-weight: 500; font-size: 0.95rem; }
+        .nav-links a:hover { color: white; }
+
+        .btn-glow {
+            background: var(--gradient-btn); color: white;
+            padding: 0.8rem 1.8rem; border-radius: 50px;
+            font-weight: 600; font-size: 0.9rem;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .btn-glow:hover { box-shadow: 0 0 30px rgba(79, 70, 229, 0.6); transform: translateY(-2px); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 120px 20px 60px;
+            position: relative;
+        }
+
+        /* Effet de lueur derrière le titre */
+        .hero::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            z-index: -1; pointer-events: none;
+        }
+
+        .pill {
+            background: rgba(99, 102, 241, 0.1); color: #818cf8;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 0.5rem 1.2rem; border-radius: 100px;
+            font-size: 0.85rem; font-weight: 600; margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.1; margin-bottom: 1.5rem;
+            font-weight: 800; letter-spacing: -2px;
+        }
+
+        .gradient-text {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem; color: var(--text-muted);
+            max-width: 650px; margin: 0 auto 3rem;
+            font-weight: 400;
+        }
+
+        .hero-btns { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.05); color: white;
+            padding: 0.8rem 1.8rem; border-radius: 50px;
+            font-weight: 600; border: var(--border);
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+        /* --- TECH STACK (Marquee) --- */
+        .tech-stack {
+            margin-top: 5rem;
+            border-top: var(--border); border-bottom: var(--border);
+            padding: 2rem 0; background: rgba(0,0,0,0.2);
+        }
+        .tech-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .tech-icons {
+            display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; opacity: 0.6;
+        }
+        .tech-icons i { font-size: 2.5rem; transition: 0.3s; color: white; }
+        .tech-icons i:hover { opacity: 1; color: var(--glow); transform: scale(1.1); }
+
+        /* --- SERVICES CARDS --- */
+        .section { padding: 8rem 5%; max-width: 1200px; margin: 0 auto; }
+        
+        .section-header { margin-bottom: 5rem; text-align: center; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+
+        .card {
+            background: var(--bg-card); border: var(--border);
+            border-radius: var(--radius); padding: 2.5rem;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+        }
+        
+        /* Petit effet néon au survol */
+        .card::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--gradient-btn);
+            opacity: 0; transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); border-color: rgba(99, 102, 241, 0.3); }
+        .card:hover::after { opacity: 1; }
+
+        .icon-box {
+            width: 60px; height: 60px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #818cf8; margin-bottom: 1.5rem;
+        }
+
+        .card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+        .card p { color: var(--text-muted); font-size: 1rem; }
+
+        /* --- PORTFOLIO (AVEC IMAGES) --- */
+        .project-card {
+            background: var(--bg-card); border: var(--border);
+            border-radius: var(--radius); overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: 0.4s; group;
+        }
+        .project-card:hover { border-color: var(--accent); transform: scale(1.02); }
+
+        .card-image-wrapper {
+            position: relative; width: 100%; height: 200px; overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .project-card:hover .card-image-wrapper img { transform: scale(1.05); }
+
+        .project-badge {
+            position: absolute; top: 15px; left: 15px;
+            background: rgba(11, 15, 25, 0.9); border: 1px solid rgba(255,255,255,0.1);
+            color: var(--glow); backdrop-filter: blur(4px);
+            padding: 5px 12px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .card-body-project { padding: 2rem; flex-grow: 1; }
+        .card-body-project h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: white; }
+        .card-body-project p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0; }
+        .tag {
+            font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 6px;
+            background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .tag.highlight { border-color: var(--primary); color: #a5b4fc; background: rgba(99, 102, 241, 0.1); }
+
+        .btn-link {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 1rem;
+            background: rgba(255,255,255,0.03); color: white;
+            font-weight: 600; border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .btn-link:hover { background: rgba(255,255,255,0.08); color: var(--glow); }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: var(--border); padding: 3rem 5%; text-align: center;
+            background: rgba(0,0,0,0.2);
+        }
+        .socials { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1.5rem; }
+        .socials a { color: var(--text-muted); font-size: 1.5rem; }
+        .socials a:hover { color: white; transform: scale(1.2); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Tech Effect -->
+    <div class="tech-bg"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" data-aos="fade-down">
+        <div class="brand">DOMINIQUE<span>.BC</span></div>
+        <div class="nav-links">
+            <a href="#expertise">Solutions</a>
+            <a href="#work">Études de cas</a>
+            <a href="mailto:jbillcataria@gmail.com">Contact</a>
+        </div>
+        <a href="#work" class="btn-glow">Voir les projets</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="pill" data-aos="fade-up">🚀 Disponible pour missions & CDD</div>
+        
+        <h1 data-aos="fade-up" data-aos-delay="100">
+            J'automatise votre activité. <br> 
+            <span class="gradient-text">Vous encaissez les résultats.</span>
+        </h1>
+        
+        <p data-aos="fade-up" data-aos-delay="200">
+            Je suis l'architecte de vos systèmes digitaux. Je connecte vos outils (Make), je construis vos interfaces (WordPress) et je convertis vos visiteurs (Tunnels).
+        </p>
+        
+        <div class="hero-btns" data-aos="fade-up" data-aos-delay="300">
+            <a href="#work" class="btn-glow">Explorer mon travail</a>
+            <a href="https://www.linkedin.com/in/cataria-bc" target="_blank" class="btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <div class="tech-stack" data-aos="fade-in">
+        <div class="tech-container">
+            <p style="color:var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;">Ma Stack Technique</p>
+            <div class="tech-icons">
+                <i class="fas fa-bolt" title="Make / Automation"></i>
+                <i class="fab fa-wordpress" title="WordPress"></i>
+                <i class="fas fa-funnel-dollar" title="Systeme.io"></i>
+                <i class="fab fa-github" title="GitHub"></i>
+                <i class="fab fa-stripe" title="Paiements"></i>
+                <i class="fab fa-google" title="Google Workspace"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES CARDS -->
+    <section id="expertise" class="section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Ce que je construis pour vous</h2>
+            <p>Une approche pragmatique : Automatiser ce qui peut l'être, optimiser le reste.</p>
+        </div>
+
+        <div class="grid-3">
+            <!-- Card 1 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon-box"><i class="fas fa-network-wired"></i></div>
+                <h3>Automation Workflows</h3>
+                <p>J'élimine les tâches manuelles en connectant vos apps via <strong>Make</strong> (API). Vos données circulent automatiquement entre votre CRM, vos emails et vos tableaux de bord.</p>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <h3>Tunnels de Vente</h3>
+                <p>Architecture complète sur <strong>Systeme.io</strong> : Pages de capture, séquences emails, upsells. Je transforme un simple visiteur en client fidèle.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
+                <h3>Plateformes Web</h3>
+                <p>Développement de sites <strong>WordPress</strong> ou pages sur mesure. Rapides, sécurisés et pensés pour l'expérience utilisateur (et le mobile).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="work" class="section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Réalisations Sélectionnées</h2>
+            <p>Des systèmes concrets, déployés et fonctionnels.</p>
+        </div>
+
+        <div class="grid-3">
+            
+            <!-- Projet 1 -->
+            <div class="project-card" data-aos="fade-up">
+                <div class="card-image-wrapper">
+                    <img src="https://res.cloudinary.com/dglwrrvh3/image/upload/v1767110039/Capture_d_%C3%A9cran_302_jtjfqz.png" alt="Event Control">
+                    <div class="project-badge">Automatisation</div>
+                </div>
+                <div class="card-body-project">
+                    <h3>Event Control System</h3>
+                    <p>Système de gestion d'événements automatisé. Orchestration complexe des données via Make et interface web.</p>
+                    <div class="tags">
+                        <span class="tag highlight">Make (Integromat)</span>
+                        <span class="tag">API</span>
+                        <span class="tag">Data Sync</span>
+                    </div>
+                </div>
+                <a href="https://event-control-v10.github.io/presentation_web_site/" target="_blank" class="btn-link">
+                    Voir la démo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-image-wrapper">
+                    <img src="https://res.cloudinary.com/dglwrrvh3/image/upload/v1767110513/Capture_d_%C3%A9cran_303_l3mu2a.png" alt="Ridfirst">
+                    <div class="project-badge">E-Commerce</div>
+                </div>
+                <div class="card-body-project">
+                    <h3>Chez Ridfirst</h3>
+                    <p>Tunnel de vente haute conversion pour produits physiques. Optimisation du checkout et de la récupération de paniers abandonnés.</p>
+                    <div class="tags">
+                        <span class="tag highlight">Systeme.io</span>
+                        <span class="tag">Payment Gateway</span>
+                    </div>
+                </div>
+                <a href="https://proelites.systeme.io/chez-ridfirst" target="_blank" class="btn-link">
+                    Visiter le tunnel <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-image-wrapper">
+                    <img src="https://res.cloudinary.com/dglwrrvh3/image/upload/v1767110661/Capture_d_%C3%A9cran_112_cb2ehv.png" alt="Terre des Enfants">
+                    <div class="project-badge">Site Institutionnel</div>
+                </div>
+                <div class="card-body-project">
+                    <h3>Terre des Enfants</h3>
+                    <p>Refonte digitale pour une ONG. Site vitrine WordPress avec intégration de blog et modules de dons/contact.</p>
+                    <div class="tags">
+                        <span class="tag highlight">WordPress</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">Responsive</span>
+                    </div>
+                </div>
+                <a href="https://terre-des-enfants-epanouis.org/" target="_blank" class="btn-link">
+                    Voir le site <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Projet 4 -->
+            <div class="project-card" data-aos="fade-up">
+                <div class="card-image-wrapper">
+                    <img src="https://res.cloudinary.com/dglwrrvh3/image/upload/v1767111089/Capture_d_%C3%A9cran_305_iyrtoz.png" alt="Baby Bliss">
+                    <div class="project-badge">Acquisition</div>
+                </div>
+                <div class="card-body-project">
+                    <h3>Baby Bliss Funnel</h3>
+                    <p>Landing page de niche (Parentalité) conçue pour maximiser la capture de leads. Copywriting émotionnel.</p>
+                    <div class="tags">
+                        <span class="tag highlight">Landing Page</span>
+                        <span class="tag">Lead Gen</span>
+                    </div>
+                </div>
+                <a href="https://babyblissbyparenthea.systeme.io/accueil" target="_blank" class="btn-link">
+                    Voir la page <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Projet 5 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-image-wrapper">
+                    <img src="https://res.cloudinary.com/dglwrrvh3/image/upload/v1767111254/Capture_d_%C3%A9cran_306_cu0qxw.png" alt="Portfolio Jean">
+                    <div class="project-badge">Branding</div>
+                </div>
+                <div class="card-body-project">
+                    <h3>Portfolio Jean Agbangla</h3>
+                    <p>Site personnel structuré pour un consultant. Mise en avant de l'expertise et architecture de l'information claire.</p>
+                    <div class="tags">
+                        <span class="tag highlight">Branding</span>
+                        <span class="tag">UI Design</span>
+                    </div>
+                </div>
+                <a href="https://proelites.systeme.io/jean-agbangla-portfolio" target="_blank" class="btn-link">
+                    Voir le projet <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+             <!-- Projet 6 -->
+             <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-image-wrapper">
+                    <img src="https://res.cloudinary.com/dglwrrvh3/image/upload/v1767111402/Capture_d_%C3%A9cran_307_uh21u9.png" alt="Portfolio Wilfried">
+                    <div class="project-badge">Design UI</div>
+                </div>
+                <div class="card-body-project">
+                    <h3>Portfolio Wilfried G.</h3>
+                    <p>Vitrine digitale interactive pour présenter des services professionnels. Design moderne et fluide.</p>
+                    <div class="tags">
+                        <span class="tag highlight">Portfolio</span>
+                        <span class="tag">Web Design</span>
+                    </div>
+                </div>
+                <a href="https://proelites.systeme.io/gougni-wilfried-portfolio" target="_blank" class="btn-link">
+                    Voir le projet <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2 style="color: white; margin-bottom: 1rem;">Prêt à automatiser votre succès ?</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Discutons de votre projet et voyons comment gagner du temps ensemble.</p>
+        <a href="mailto:jbillcataria@gmail.com" class="btn-glow">Lancer la discussion</a>
+        
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/cataria-bc" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:jbillcataria@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #475569;">© 2025 Dominique Bill Cataria. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Script Animation (AOS) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+    </script>
+</body>
+</html>
